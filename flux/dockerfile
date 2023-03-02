@@ -1,0 +1,10 @@
+FROM golang:1.20.1
+
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+WORKDIR /home
+RUN git clone https://github.com/influxdata/flux.git
+WORKDIR /home/flux
+RUN go install github.com/influxdata/pkg-config
+# RUN go build ./cmd/flux
+
+# ENTRYPOINT ["./flux" "--enable-suggestions"]
